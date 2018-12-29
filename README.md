@@ -1,2 +1,3 @@
 # JavaNotebook
-learn and conclude Java
+
+Ready to conclude java and learn more.
