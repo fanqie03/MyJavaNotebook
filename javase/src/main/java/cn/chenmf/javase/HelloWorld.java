@@ -1,5 +1,7 @@
 package cn.chenmf.javase;
 
+import cn.chenmf.common.data.DataUtil;
+
 /**
  * @author         skiner
  * @Date           2018/12/29
@@ -8,6 +10,6 @@ package cn.chenmf.javase;
  */
 public class HelloWorld {
     public static void main(String[] args){
-        System.out.println("HelloWorld");
+        System.out.println("HelloWorld"+ DataUtil.nextInt());
     }
 }
