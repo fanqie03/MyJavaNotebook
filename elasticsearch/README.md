@@ -167,3 +167,8 @@ POST /customer/doc/1/_update
 ```
 
 [`_update_by_query`](https://www.elastic.co/guide/en/elasticsearch/reference/6.0/docs-update-by-query.html)
+
+## [Java Api](https://www.elastic.co/guide/en/elasticsearch/client/java-api/5.4/java-api.html)
+
+- 异步，返回未来结果
+- 核心是`Client` - `org.elasticsearch.client`；实现类为`TransportClient` - `org.elasticsearch.client.transport`；

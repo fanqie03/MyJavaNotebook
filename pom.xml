@@ -12,6 +12,7 @@
         <module>javaee</module>
         <module>javase</module>
         <module>common</module>
+        <module>elasticsearch</module>
     </modules>
 
     <properties>
