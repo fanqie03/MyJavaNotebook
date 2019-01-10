@@ -39,9 +39,16 @@
 
 ### 文档
 
-文档是可以编辑的基本信息单元。该文档以JSON（JavaScript Object Notation）表示。
+文档是可以编辑的基本信息单元。该文档以JSON存储。如员工信息index中的一名员工可以作为一个document存储。
 
-例如，您可以为单个客户提供文档，为单个产品提供另一个文档，为单个订单提供另一个文档。
+```json
+{
+    "name":             "Zhang San",
+    "age":              26,
+    "on_board_date":    "2015-10-31",
+    "school":           "Nanjing University"
+}
+```
 
 ### 分片（shards）和复制（replicas）
 
@@ -172,3 +179,55 @@ POST /customer/doc/1/_update
 
 - 异步，返回未来结果
 - 核心是`Client` - `org.elasticsearch.client`；实现类为`TransportClient` - `org.elasticsearch.client.transport`；
+
+## Mapping
+
+类似于sql中的表结构的定义，可以用于定义index和field。
+
+每个索引都有一种映射类型，用于确定文档的索引方式。
+
+查看mapping`GET /[index_name]/_mapping`
+
+```json
+{
+  // 索引
+  "twitter" : {
+    // 该索引的mappings，相当于schema
+    "mappings" : {
+      // type
+      "_doc" : {
+        // type下的字段
+        "properties" : {
+          "email" : {"type" : "keyword"}
+        }
+      }
+    }
+  }
+}
+```
+
+## Field
+
+### [数据类型](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)
+
+- 核心
+  - string：text，keyword
+  - number：long，integer，short, byte, double, float, half_float, scaled_float
+  - date
+  - boolean
+  - binary
+  - range：integer_range, float_range, long_range, double_range, date_range
+- 复杂
+  - array
+  - object：单一json对象
+  - nested：多个json对象
+
+## 聚合
+
+### bucketing
+
+### metric
+
+### matrix
+
+### pipeline

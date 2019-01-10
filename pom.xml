@@ -13,6 +13,8 @@
         <module>javase</module>
         <module>common</module>
         <module>elasticsearch</module>
+        <module>hbase</module>
+        <module>kafka</module>
     </modules>
 
     <properties>
