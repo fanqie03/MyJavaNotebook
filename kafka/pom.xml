@@ -12,6 +12,13 @@
     <artifactId>kafka</artifactId>
 
 
+    <properties>
+        <elasticsearch.version>5.4.3</elasticsearch.version>
+        <log4j.version>2.8.2</log4j.version>
+        <slf4j.version>1.7.24</slf4j.version>
+        <jackson.version>2.9.8</jackson.version>
+    </properties>
+
     <dependencies>
         <!--生产者消费者组件-->
         <dependency>
@@ -25,6 +32,38 @@
             <!--<artifactId>kafka-streams</artifactId>-->
             <!--<version>0.10.2.0</version>-->
         <!--</dependency>-->
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>rest</artifactId>
+            <version>${elasticsearch.version}</version>
+        </dependency>
+
+
+        <!--日志-->
+        <!--将log4j转成slf4j-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-to-slf4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!--使用slf4j门面API-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!--使用simple实现slf4j-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
