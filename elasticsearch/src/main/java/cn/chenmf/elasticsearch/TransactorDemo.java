@@ -32,9 +32,9 @@ import java.util.Date;
  * https://www.elastic.co/guide/en/elasticsearch/client/java-api/5.4/java-docs.html
  * @Modified By
  */
-public class DocumentDemo {
+public class TransactorDemo {
 
-    private final static Logger logger = LoggerFactory.getLogger(DocumentDemo.class);
+    private final static Logger logger = LoggerFactory.getLogger(TransactorDemo.class);
 
     public static void main(String[] args) throws IOException {
         logger.info("on start");

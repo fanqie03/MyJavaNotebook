@@ -231,3 +231,23 @@ POST /customer/doc/1/_update
 ### matrix
 
 ### pipeline
+
+## 客户端的使用
+
+有`TransportClient`，`RestHighLevelClient`，`RestLowLevelClient`
+
+TransportClient使用对象序列化进行查询，RestClient使用RestApi进行查询
+
+1. 计划在7中删除TransportClient，并在8中完全删除它。
+ 
+2. Java高级REST客户端目前支持更常用的API，但仍有很多需要添加的API。
+ 
+3. 任何缺失的API都可以通过使用JSON请求和响应体的低级Java REST客户端来实现。
+
+就是说TransportClient过时了，而RestHighLevelClient还不完善，还需要增加新API，但是RestLowLevelClient非常完善，满足我们的API需求。
+
+RestLowLevelClient的核心类为`org.elasticsearch.client.RestClient`
+
+RestHighLevelClient的核心类为`org.elasticsearch.client.RestHighLevelClient`
+
+TransportClient的核心类就是自己`org.elasticsearch.client.transport.TransportClient`
