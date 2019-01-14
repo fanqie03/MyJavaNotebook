@@ -206,6 +206,83 @@ POST /customer/doc/1/_update
 }
 ```
 
+### 创建索引
+
+PUT my_index
+```json
+{
+  "mappings": {
+    "_doc": {
+      "properties": {
+//        text field for full-text search,能够被解析器解析成单词列表
+//        keyword field for sorting or aggregations
+        "city": {
+          "type": "text",
+//          允许被排序，聚合或使用脚本，默认false
+          "fielddata": false ,
+//          是否可以被搜索，默认为true
+          "index":true,
+          "fields": {
+            "raw": { 
+              "type":  "keyword"
+            }
+          }
+        },
+        "text": { 
+          "type": "text",
+          "fields": {
+            "english": { 
+              "type":     "text",
+//              `english`英语分析器将单词形式化为根形式
+//              `standard`标准分析器将文本分解为单词
+              "analyzer": "english"
+            }
+          }
+        },
+//        copy_to参数允许您创建自定义_all字段。
+        "first_name": {
+          "type": "text",
+          "copy_to": "full_name" 
+        },
+        "last_name": {
+          "type": "text",
+          "copy_to": "full_name" 
+        },
+        "full_name": {
+          "type": "text"
+        },
+//        可以通过用`||`分隔多种格式来指定它们作为分隔符。
+        "date": {
+          "type":   "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+//        它们通常用于过滤（查找发布状态的所有博客文章），排序和聚合。关键字字段只能按其确切值进行搜索。
+        "tags": {
+          "type":  "keyword"
+        },
+//        数字
+        "number_of_bytes": {
+          "type": "integer"
+        },
+        "time_in_seconds": {
+          "type": "float"
+        },
+        "price": {
+          "type": "scaled_float",
+          "scaling_factor": 100
+        }
+      }
+    }
+  }
+}
+```
+
+三种情况可以更新映射
+
+- 可以将新属性`properties`添加到Object数据`Object datatype`类型字段。
+- 可以将新的多字段`nuti-fields`添加到现有字段中。
+- `ignore_above`参数可以更新。
+
 ## Field
 
 ### [数据类型](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)
